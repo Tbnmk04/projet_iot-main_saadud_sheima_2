@@ -3,66 +3,70 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
     <title>IOT SENSOR</title>
-      <style>.marouane{
-
-
-text-decoration: none;}</style>
+    <style>
+      .marouane {
+        text-decoration: none;
+      }
+    </style>
   </head>
   <body>
-  <header class="header">
-    <div class="menu-bar">
-      <a href="home" class="marouane" ><h1 class="logo">IOT<span>SENSOR</span></h1></a>
-      <ul>
-
-
-        <li><a href="chartTEMP">CHART TEMPERATURE<i class="fas fa-caret-down"></i></a>
-
+    <header class="header">
+      <div class="menu-bar">
+        <a href="home" class="marouane">
+          <h1 class="logo">IOT<span>CAPTEUR</span></h1>
+        </a>
+        <ul>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M60.78-600v-153.22q0-44.3 30.85-75.15 30.85-30.85 75.15-30.85h626.44q44.3 0 75.15 30.85 30.85 30.85 30.85 75.15V-600h-106v-153.22H166.78V-600h-106Zm106 379.22q-44.3 0-75.15-30.85-30.85-30.85-30.85-75.15V-520h106v193.22h626.44V-520h106v193.22q0 44.3-30.85 75.15-30.85 30.85-75.15 30.85H166.78ZM66.43-92.3q-18.68 0-31.32-12.8-12.63-12.8-12.63-31.72 0-18.69 12.8-31.32 12.8-12.64 31.72-12.64h826.57q18.68 0 31.32 12.64 12.63 12.64 12.63 31.33 0 18.68-12.8 31.59Q911.92-92.3 893-92.3H66.43ZM480-540ZM60.78-520v-80H320q11 0 21 5.72 10 5.71 15 16.28l47 93.57 121.87-214.44q5-9.56 14.56-14.78 9.57-5.22 20.57-5.22t21 5.22q10 5.22 15 15.65l49 98h254.22v80H627.91q-14.95 0-27.78-7.76-12.83-7.76-19.52-21.59L558-594.43l-122.43 213.3q-5 10.56-15 15.85-10 5.28-21 5.28t-20.79-5.72Q369-371.43 364-382l-69-138H60.78Z"/></svg>
+            <a href="chartTEMP">CHART TEMPERATURE<i class="fas fa-caret-down"></i></a>
             <div class="dropdown-menu">
-                <ul>
-                  <li><a href="c_jour">DEPUIS 24H</a></li>
-                  <li>   <a href="chartTEMP_semaine">DEPUIS UNE SEMAINE</a></li>
-                  <li> <a href="chartTEMP_mois">DEPUIS UN MOIS</a></li>
-                </ul>
-              </div>
-        </li>
-
-
-
-        <li><a href="chartHUM">CHART HUMIDITE<i class="fas fa-caret-down"></i></a>
-
-          <div class="dropdown-menu">
+              <ul>
+                <li><a href="c_jour">DEPUIS 24H</a></li>
+                <li><a href="chartTEMP_semaine">DEPUIS UNE SEMAINE</a></li>
+                <li><a href="chartTEMP_mois">DEPUIS UN MOIS</a></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M60.78-600v-153.22q0-44.3 30.85-75.15 30.85-30.85 75.15-30.85h626.44q44.3 0 75.15 30.85 30.85 30.85 30.85 75.15V-600h-106v-153.22H166.78V-600h-106Zm106 379.22q-44.3 0-75.15-30.85-30.85-30.85-30.85-75.15V-520h106v193.22h626.44V-520h106v193.22q0 44.3-30.85 75.15-30.85 30.85-75.15 30.85H166.78ZM66.43-92.3q-18.68 0-31.32-12.8-12.63-12.8-12.63-31.72 0-18.69 12.8-31.32 12.8-12.64 31.72-12.64h826.57q18.68 0 31.32 12.64 12.63 12.64 12.63 31.33 0 18.68-12.8 31.59Q911.92-92.3 893-92.3H66.43ZM480-540ZM60.78-520v-80H320q11 0 21 5.72 10 5.71 15 16.28l47 93.57 121.87-214.44q5-9.56 14.56-14.78 9.57-5.22 20.57-5.22t21 5.22q10 5.22 15 15.65l49 98h254.22v80H627.91q-14.95 0-27.78-7.76-12.83-7.76-19.52-21.59L558-594.43l-122.43 213.3q-5 10.56-15 15.85-10 5.28-21 5.28t-20.79-5.72Q369-371.43 364-382l-69-138H60.78Z"/></svg>
+            <a href="chartHUM">CHART HUMIDITE<i class="fas fa-caret-down"></i></a>
+            <div class="dropdown-menu">
               <ul>
                 <li><a href="chartHUM_jour">DEPUIS 24H</a></li>
-                <li>   <a href="chartHUM_semaine">DEPUIS UNE SEMAINE</a></li>
-                <li> <a href="chartHUM_mois">DEPUIS UN MOIS</a></li>
+                <li><a href="chartHUM_semaine">DEPUIS UNE SEMAINE</a></li>
+                <li><a href="chartHUM_mois">DEPUIS UN MOIS</a></li>
               </ul>
             </div>
-      </li>
-
-
-        <li><a href="download_csv">DOWNLOAD CSV<i class="fas fa-caret-down"></i></a>
-
-          <div class="dropdown-menu">
+          </li>
+          <li>
+<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M480-348.87q-10.26 0-20.09-3.91-9.82-3.92-17.52-11.61L289.91-516.87q-15.39-15.39-15.17-37.04.22-21.66 15.17-37.05 15.96-15.96 37.55-16.17 21.58-.22 37.54 15.74l62 62v-236.83q0-22.08 15.46-37.54 15.45-15.46 37.54-15.46t37.54 15.46Q533-788.3 533-766.22v236.83l62-62q15.39-15.96 36.98-16.03 21.59-.06 37.54 15.9 15.52 15.95 15.74 37.32.22 21.37-15.74 37.33L517.61-364.39q-7.7 7.69-17.52 11.61-9.83 3.91-20.09 3.91ZM246.78-140.78q-44.3 0-75.15-30.85-30.85-30.85-30.85-75.15v-67q0-22.09 15.46-37.55 15.46-15.45 37.54-15.45 22.09 0 37.55 15.45 15.45 15.46 15.45 37.55v67h466.44v-67q0-22.09 15.45-37.55 15.46-15.45 37.55-15.45 22.08 0 37.54 15.45 15.46 15.46 15.46 37.55v67q0 44.3-30.85 75.15-30.85 30.85-75.15 30.85H246.78Z"/></svg>
+            <a href="download_csv">DOWNLOAD CSV<i class="fas fa-caret-down"></i></a>
+            <div class="dropdown-menu">
               <ul>
                 <li><a href="csv_jour">DOWNLOAD CSV JOUR</a></li>
-                <li>   <a href="csv_semaine">DOWNLOAD CSV SSEMAINE</a></li>
-                <li> <a href="csv_mois">DOWNLOAD CSV  MOIS</a></li>
+                <li><a href="csv_semaine">DOWNLOAD CSV SEMAINE</a></li>
+                <li><a href="csv_mois">DOWNLOAD CSV MOIS</a></li>
               </ul>
             </div>
-      </li>
-        {% if user.is_authenticated %}
-   <li><a href="{% url 'logout' %}">LOGOUT</a></li>
-{% endif %}
+          <li>
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M115.22-110.39q-14.96 0-26.83-7.37-11.88-7.36-18.48-19.41-6.69-11.83-7.19-25.78-.5-13.94 7.19-27.22L433.7-820q7.69-13.39 20.36-19.8 12.66-6.42 26-6.42 13.33 0 25.94 6.42 12.61 6.41 20.3 19.8l363.79 629.83q7.69 13.28 7.19 27.22-.5 13.95-7.19 25.78-6.7 11.82-18.52 19.3-11.83 7.48-26.79 7.48H115.22Zm76.91-97.52h575.74L480-704.17 192.13-207.91ZM480-241.7q17.57 0 30.2-12.63 12.63-12.63 12.63-30.19 0-17.57-12.63-29.92-12.63-12.34-30.2-12.34t-30.2 12.34q-12.63 12.35-12.63 29.92 0 17.56 12.63 30.19 12.63 12.63 30.2 12.63Zm0-118.3q17 0 28.5-11.5T520-400v-113.78q0-17-11.5-28.5t-28.5-11.5q-17 0-28.5 11.5t-11.5 28.5V-400q0 17 11.5 28.5T480-360Zm0-96.04Z"/></svg>
+            <a href="INCIDENTS">INCIDENTS</a>
+          </li>
+          {% if user.is_authenticated %}
+          <li><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M206.78-100.78q-44.3 0-75.15-30.85-30.85-30.85-30.85-75.15v-546.44q0-44.3 30.85-75.15 30.85-30.85 75.15-30.85h224.74q22.09 0 37.55 15.46 15.45 15.46 15.45 37.54 0 22.09-15.45 37.55-15.46 15.45-37.55 15.45H206.78v546.44h224.74q22.09 0 37.55 15.45 15.45 15.46 15.45 37.55 0 22.08-15.45 37.54-15.46 15.46-37.55 15.46H206.78ZM657.61-427H408.48q-22.09 0-37.55-15.46-15.45-15.45-15.45-37.54t15.45-37.54Q386.39-533 408.48-533h249.13l-62-62q-14.96-14.96-14.96-36.61t14.96-37.04q14.95-15.96 36.76-16.18 21.8-.21 37.76 15.74l152.04 152.05q15.4 15.95 15.4 37.04t-15.4 37.04L670.13-290.91q-15.39 15.95-37.26 15.74-21.87-.22-37.26-16.18-14.96-15.39-14.74-37.26.22-21.87 15.17-36.82L657.61-427Z"/></svg>
+            <a href="{% url 'logout' %}">LOGOUT</a></svg></li>
+          {% endif %}
+        </ul>
 
-
-      </ul>
-    </div>
-
-</header>
+      </div>
+    </header>
+    <main>
+      {% block index %}
+      {% endblock index %}
+    </main>
   </body>
 </html>
-{% block index %}
-{% endblock index %}

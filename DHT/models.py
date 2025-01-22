@@ -12,3 +12,5 @@ class Dht11(models.Model):
 
 
 
+
+
