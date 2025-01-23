@@ -120,6 +120,24 @@
             <i class="bi bi-gear"></i> Parameters
           </a>
         </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="csvDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <i class="bi bi-file-earmark-arrow-down"></i> Download CSV
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="csvDropdown">
+            <li><a class="dropdown-item" href="{% url 'csvJ' %}">DEPUIS 24H</a></li>
+            <li><a class="dropdown-item" href="{% url 'csvS' %}">DEPUIS UNE SEMAINE</a></li>
+            <li><a class="dropdown-item" href="{% url 'csvM' %}">DEPUIS UN MOIS</a></li>
+            <li><a class="dropdown-item" href="{% url 'csv' %}">ALL TIME</a></li>
+          </ul>
+        </li>
         <li>
           <a
             class="nav-link"
