@@ -44,6 +44,56 @@ def table(request):
     valeurs = {'date': temps_ecoule, 'id': derniere_ligne.id, 'temp': derniere_ligne.temp, 'hum': derniere_ligne.hum}
     return render(request, 'table.html', {'valeurs': valeurs})
 
+
+
+
+
+
+from .models import NotificationsParameters, NotificationType
+from django.urls import reverse
+
+@login_required
+def parameters_view(request):
+    params = NotificationsParameters.objects.all()
+    return render(request, 'parameters.html', {'params': params, 'NotificationType': NotificationType})
+
+@login_required
+def add_param(request):
+    if request.method == 'POST':
+        type = request.POST['type']
+        mainResource = request.POST['mainResource']
+        NotificationsParameters.objects.create(type=type, mainResource=mainResource)
+    return redirect(reverse('parameters'))
+
+@login_required
+def edit_param(request):
+    if request.method == 'POST':
+        id = request.POST['id']
+        type = request.POST['type']
+        mainResource = request.POST['mainResource']
+        param = NotificationsParameters.objects.get(id=id)
+        param.type = type
+        param.mainResource = mainResource
+        param.save()
+    return redirect(reverse('parameters'))
+
+@login_required
+def delete_param(request):
+    if request.method == 'POST':
+        id = request.POST['id']
+        param = NotificationsParameters.objects.get(id=id)
+        param.delete()
+    return redirect(reverse('parameters'))
+
+
+from .models import Incident
+
+@login_required
+def incidents_view(request):
+    incidents = Incident.objects.all()
+    return render(request, 'incidents.html', {'incidents': incidents})
+
+
 ########################afiichage CSV#############################################################################################################"
 @login_required
 def download_csv(request):
@@ -120,15 +170,28 @@ def chart_HUM_mois(request):
     s = {'tab': tab}
     return render(request, 'chartHUM.html', s)
 
+
+
+# filepath: /home/kira/HTML_vscode/projet_iot-main_saadud_sheima_2/DHT/views.py
+
 @login_required
 def chart_HUM_semaine(request):
     dht = Dht11.objects.all()
-    date_debut_semaine = timezone.now().date() - datetime.timedelta(days=7)
-    print(datetime.timedelta(days=7))
-    print(date_debut_semaine)
+    date_debut_semaine = timezone.now() - datetime.timedelta(days=7)
+    print("datetime.timedelta(days=7): " + str(datetime.timedelta(days=7)))
+    print("le date_debut_semaine: " + str(date_debut_semaine))
+    
+    # Print all dt values for debugging
+    for record in dht:
+        print(f"Record ID: {record.id}, dt: {record.dt}")
+    
+    # Ensure dt field is timezone-aware
     tab = Dht11.objects.filter(dt__gte=date_debut_semaine)
+    print("tab count is " + str(tab.count()))
+    
     s = {'tab': tab}
     return render(request, 'chartHUM.html', s)
+
 
 
 @login_required
@@ -138,6 +201,7 @@ def chart_HUM_jour(request):
     last_24_hours = now - timezone.timedelta(hours=24)
 # Récupérer tous les objets de Module créés au cours des 24 dernières
     tab= Dht11.objects.filter(dt__range=(last_24_hours, now))
+    print(tab.count())
     s = {'tab': tab}
     return render(request, 'chartHUM.html', s)
 

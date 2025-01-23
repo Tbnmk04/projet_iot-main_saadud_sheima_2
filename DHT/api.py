@@ -6,7 +6,7 @@ from django.conf import settings
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from .models import Dht11
+from .models import Dht11 ,Incident
 from .serializers import DHT11serialize
 import requests
 import vonage
@@ -33,19 +33,26 @@ def dhtser(request):
                     message = f'Il y a une alerte importante sur votre Capteur, la température est: {Dht11.objects.last().temp} et dépasse le seuil.'
                     email_from = settings.EMAIL_HOST_USER
                     recipient_list =['marmak99@gmail.com']
-                    send_mail(subject, message, email_from, recipient_list)
-                    ######
-                    base_url = f'https://api.telegram.org/bot6977845764:AAE1Ikldk3C8x7IO8NgBsubmC5dKjYuLVH8/sendMessage?chat_id=-4031673212&text="la temperature est {Dht11.objects.last().temp} et depassé la limite"'
-                    requests.get(base_url)
-                    ##############
-                    client = vonage.Client(key="45529cbe", secret="1YTJ34aik98vCkL0")
-                    client.sms.send_message(
-                        {
-                            "from": "Alerte",
-                            "to": "212654849412",
-                            "text": f"Il y a une alerte importante sur votre Capteur, la température est: {Dht11.objects.last().temp} et dépasse le seuil.",
-                        })
-                    #####################
+                    Incident.objects.create(
+                    title="Un incident a été détecté",
+                    description="temperature > 30",
+                    temperature=request.data.get("temp"),
+                    humidity=request.data.get("hum"),
+                    )
+                    try:
+                        send_mail(subject, message, email_from, recipient_list)                    
+                        base_url = f'https://api.telegram.org/bot6977845764:AAE1Ikldk3C8x7IO8NgBsubmC5dKjYuLVH8/sendMessage?chat_id=-4031673212&text="la temperature est {Dht11.objects.last().temp} et depassé la limite"'
+                        requests.get(base_url)                                                
+                        client = vonage.Client(key="45529cbe", secret="1YTJ34aik98vCkL0")
+                        client.sms.send_message(
+                            {
+                                "from": "Alerte",
+                                "to": "212654849412",
+                                "text": f"Il y a une alerte importante sur votre Capteur, la température est: {Dht11.objects.last().temp} et dépasse le seuil.",
+                            })                        
+                    except Exception as e:                        
+                        print(f"An error occurred: {e}")
+    
                 elif person_counter == 1:
                     subject = 'Alerte DHT'
                     message = f'Il y a une alerte importante sur votre Capteur, la température est: {Dht11.objects.last().temp} et dépasse le seuil.'
